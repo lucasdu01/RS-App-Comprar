@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#D0D2D8",
     paddingTop: 62,
     padding: 24,
+    gap: 24,
   },
   logo: {
     height: 34,
