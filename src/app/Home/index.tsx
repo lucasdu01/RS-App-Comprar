@@ -3,6 +3,7 @@ import { View, Image, TouchableOpacity, Text } from "react-native";
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { Filter } from "@/components/Filter";
+import { Item } from "@/components/Item";
 
 import { styles } from "./styles";
 import { FilterStatus } from "@/types/FilterStatus";
@@ -28,6 +29,11 @@ export function Home() {
             <Text style={styles.clearText}>Limpar</Text>
           </TouchableOpacity>
         </View>
+        <Item 
+          data={{ status: FilterStatus.DONE, description: "Café" }}
+          onStatus={() => console.log("muda o status")}
+          onRemove={() => console.log("remove o item")}
+        />
 	    </View>
     </View>
   );
