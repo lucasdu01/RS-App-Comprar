@@ -21,13 +21,19 @@ export function Home() {
 		if (!description.trim()) {
 			return Alert.alert("Adicionar", "Informe a descrição para adicionar.")
 		}
+
 		const newItem = {
 			id: Math.random().toString(36).substring(2),
 			description,
 			status: FilterStatus.PENDING,
 		}
+		
 		await itemsStorage.add(newItem)
 		await itemsByStatus()
+
+		Alert.alert("Adicionado", `Adicionado ${description}`)
+		setFilter(FilterStatus.PENDING)
+		setDescription("")
 	}
 
 	async function itemsByStatus(){
@@ -52,6 +58,7 @@ export function Home() {
 				<Input
 		  			placeholder="O que você precisa comprar?"
 		  			onChangeText={setDescription}
+					value={description}
 				/>
 				<Button title="Adicionar" onPress={handleAdd} />
 	  		</View>
