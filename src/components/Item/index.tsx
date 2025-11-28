@@ -1,19 +1,19 @@
-import { View, Text, TouchableOpacity } from "react-native";
-import { Trash2 } from "lucide-react-native";
+import { View, Text, TouchableOpacity } from "react-native"
+import { Trash2 } from "lucide-react-native"
 
-import { styles } from "./styles";
-import { StatusIcon } from "../StatusIcon";
-import { FilterStatus } from "@/types/FilterStatus";
+import { styles } from "./styles"
+import { StatusIcon } from "../StatusIcon"
+import { FilterStatus } from "@/types/FilterStatus"
 
 type ItemData = {
-    status: FilterStatus;
-    description: string;
+    status: FilterStatus
+    description: string
 }
 
 type Props = {
-    data: ItemData;
-    onRemove: () => void;
-    onStatus: () => void;
+    data: ItemData
+    onRemove: () => void
+    onStatus: () => void
 }
 
 export function Item( { data, onStatus, onRemove }: Props) {

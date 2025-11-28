@@ -1,32 +1,35 @@
-import { useState } from "react";
-import { View, Image, TouchableOpacity, Text, FlatList, Alert } from "react-native";
+import { useState, useEffect } from "react"
+import { View, Image, TouchableOpacity, Text, FlatList, Alert } from "react-native"
 
-import { Button } from "@/components/Button";
-import { Input } from "@/components/Input";
-import { Filter } from "@/components/Filter";
-import { Item } from "@/components/Item";
+import { Button } from "@/components/Button"
+import { Input } from "@/components/Input"
+import { Filter } from "@/components/Filter"
+import { Item } from "@/components/Item"
 
-import { styles } from "./styles";
-import { FilterStatus } from "@/types/FilterStatus";
+import { styles } from "./styles"
+import { FilterStatus } from "@/types/FilterStatus"
 
-const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
+const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE]
 
 export function Home() {
-	const [filter, setFilter] = useState(FilterStatus.PENDING);
-	const [description, setDescription] = useState("");
-	const [items, setItems] = useState<any>([]);
+	const [filter, setFilter] = useState(FilterStatus.PENDING)
+	const [description, setDescription] = useState("")
+	const [items, setItems] = useState<any>([])
 
 	function handleAdd() {
 		if (!description.trim()) {
-			return Alert.alert("Adicionar", "Informe a descrição para adicionar.");
+			return Alert.alert("Adicionar", "Informe a descrição para adicionar.")
 		}
 		const newItem = {
 			id: Math.random().toString(36).substring(2),
 			description,
 			status: FilterStatus.PENDING,
-		};
-		setItems((prevState) => [...prevState, newItem]);
+		}
+		setItems((prevState) => [...prevState, newItem])
 	}
+
+	useEffect(() => {}, [])
+
 	return (
 		<View style={styles.container}>
 	  		<Image source={require("@/assets/logo.png")} style={styles.logo} />
@@ -73,5 +76,5 @@ export function Home() {
 				/>
 	  		</View>
 		</View>
-  );
+  )
 }
