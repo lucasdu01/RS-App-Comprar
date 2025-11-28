@@ -28,18 +28,18 @@ export function Home() {
 		setItems((prevState) => [...prevState, newItem]);
 	}
 	return (
-    	<View style={styles.container}>
-      		<Image source={require("@/assets/logo.png")} style={styles.logo} />
+		<View style={styles.container}>
+	  		<Image source={require("@/assets/logo.png")} style={styles.logo} />
 
-      		<View style={styles.form}>
-        		<Input
-          			placeholder="O que você precisa comprar?"
-          			onChangeText={setDescription}
+	  		<View style={styles.form}>
+				<Input
+		  			placeholder="O que você precisa comprar?"
+		  			onChangeText={setDescription}
 				/>
-        		<Button title="Adicionar" onPress={handleAdd} />
-      		</View>
+				<Button title="Adicionar" onPress={handleAdd} />
+	  		</View>
 
-      		<View style={styles.content}>
+	  		<View style={styles.content}>
 				<View style={styles.header}>
 					{FILTER_STATUS.map((status) => (
 						<Filter
@@ -54,7 +54,7 @@ export function Home() {
 					</TouchableOpacity>
 				</View>
 
-        		<FlatList
+				<FlatList
 					data={items}
 					keyExtractor={(item) => item.id}
 					renderItem={({ item }) => (
@@ -64,14 +64,14 @@ export function Home() {
 							onRemove={() => console.log("remove o item")}
 						/>
 					)}
-          			showsVerticalScrollIndicator={true}
-          			ItemSeparatorComponent={() => <View style={styles.separator} />}
-          			contentContainerStyle={styles.listContent}
-          			ListEmptyComponent={() => (
-            			<Text style={styles.empty}>Nenhum item aqui.</Text>
-          			)}
+		  			showsVerticalScrollIndicator={true}
+		  			ItemSeparatorComponent={() => <View style={styles.separator} />}
+		  			contentContainerStyle={styles.listContent}
+		  			ListEmptyComponent={() => (
+						<Text style={styles.empty}>Nenhum item aqui.</Text>
+		  			)}
 				/>
-      		</View>
-    	</View>
+	  		</View>
+		</View>
   );
 }
