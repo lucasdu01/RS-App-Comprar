@@ -73,6 +73,16 @@ export function Home() {
 		}
 	}
 
+	async function haddleToggleItemStatus(id: string) {
+		try {
+			await itemsStorage.toggleStatus(id)
+			await itemsByStatus()
+		} catch (error) {
+			console.log(error)
+			Alert.alert("Erro", "não foi possível atualizar o status.")
+		}
+	}
+
 	useEffect(() => {
 		itemsByStatus()
 	}, [filter, items])
@@ -111,7 +121,7 @@ export function Home() {
 					renderItem={({ item }) => (
 						<Item
 							data={item}
-							onStatus={() => console.log("muda o status")}
+							onStatus={() => haddleToggleItemStatus(item.id)}
 							onRemove={() => handleRemove(item.id)}
 						/>
 					)}
